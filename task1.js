@@ -1,5 +1,8 @@
-function is_array(ar) {
-    return Array.isArray(ar);
+function fact(x)
+{
+    if (x === 0) return 1;
+    return x * fact(x - 1);
+
 }
-console.log(is_array('w3resource'));
-console.log(is_array([1, 2, 4, 0]));
+console.log(fact(7));
+console.log(fact(4));

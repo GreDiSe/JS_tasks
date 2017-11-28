@@ -1,9 +1,7 @@
-function last(ar, col) {
-    if(!col) return ar[ar.length - 1];
-    col = ar.length - col;
-    col = col > 0 ? col : 0;
-    return ar.slice(col)
+function summa(ar, i = 0, sum = 0) {
+    if(i === ar.length) return sum;
+    sum += ar[i];
+    return summa(ar, ++i, sum)
 }
-console.log(last([7, 9, 0, -2]));
-console.log(last([7, 9, 0, -2], 3));
-console.log(last([7, 9, 0, -2], 6));
+
+console.log(summa([1,2,3,4,5,6]))

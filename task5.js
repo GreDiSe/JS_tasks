@@ -1,6 +1,8 @@
-let myColor = ["Red", "Green", "White", "Black"];
-let result = '';
-for(let i of myColor){
-    result += i + '/';
+function foo(value, step, col = 0) {
+    if(value === 1) return col;
+    value /= step;
+
+    return foo(value, step, ++col)
 }
-console.log(result)
+
+console.log(foo(16,2))

@@ -1,10 +1,6 @@
-function first(ar, col) {
-    col = col ? col : 1;
-    col = col > 0 ? col : 0;
-    return ar.slice(0, col)
+function range(start, end, ar = []) {
+    if(start === end + 1) return ar;
+    ar.push(start);
+    return range(++start, end, ar)
 }
-console.log(first([7, 9, 0, -2]));
-console.log(first([], 3));
-console.log(first([7, 9, 0, -2], 3));
-console.log(first([7, 9, 0, -2], 6));
-console.log(first([7, 9, 0, -2],-3));
+console.log(range(3,8))

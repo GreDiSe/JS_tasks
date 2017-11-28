@@ -1,7 +1,12 @@
-function sortir(ar) {
-    return ar.sort(sort())
+function evenNum(value)
+{
+    if (value === 1) return !value
+    if (value === 0) return !value;
+    else
+    {
+        value -= 2;
+        return evenNum(value);
+    }
 }
-function sort(a,b) {
-    return (a > b)
-}
-console.log(sortir([ 3, 8, 7, 6, 5, -4, 3, 2, 1 ]));
+console.log(evenNum(234)); //true
+console.log(evenNum(13)); //false
