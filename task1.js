@@ -1,7 +1,5 @@
-let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-var date = new Date();
-
-console.log('Today is: ' + days[date.getDay()] );
-let hour = (date.getHours() < 12) ? date.getHours() + 'AM' : date.getHours() - 12 + 'PM';
-console.log('Current time is: ' + hour + ' : ' + date.getMinutes() + ' : ' + date.getSeconds() );
-
+function is_array(ar) {
+    return Array.isArray(ar);
+}
+console.log(is_array('w3resource'));
+console.log(is_array([1, 2, 4, 0]));

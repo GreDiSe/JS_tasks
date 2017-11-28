@@ -1,6 +1,6 @@
-
-var str = 'ivan';
-setInterval(function () {
-    str = str[str.length - 1] + str.slice(0, -1);
-    console.log(str);
-}, 500);
+let myColor = ["Red", "Green", "White", "Black"];
+let result = '';
+for(let i of myColor){
+    result += i + '/';
+}
+console.log(result)

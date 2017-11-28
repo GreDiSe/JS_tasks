@@ -1,4 +1,9 @@
-function getDifferent(value) {
-    return ((value - 13) > 13) ? (2*(value - 13)) : (value - 13);
+let color = ["Blue ", "Green", "Red", "Orange", "Violet", "Indigo", "Yellow "];
+let o = ["th","st","nd","rd"];
+
+function color_s(n) {
+    return (n < 3) ? ((n + 1 + o[n + 1]) + ' choice is ' + color[n]) : ((n + 1 + o[0]) + ' choice is ' + color[n]);
 }
-console.log(getDifferent(28)) // 28 - 13 = 15, 15 > 13, 15 * 2 = 30
+color.forEach(function (cur, i, color) {
+    console.log(color_s(i))
+});

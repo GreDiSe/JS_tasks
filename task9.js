@@ -1,4 +1,9 @@
-let date = new Date();
-let next_Cristmas = new Date(date.getFullYear() + 1, 0 ,7);
-let koef = 3600 * 24 * 1000;
-console.log(Math.floor((next_Cristmas.getTime() / koef) - (date.getTime() / koef)) + ' days');
+let line = 'The Quick Brown Fox';
+let str = line.split('');
+let result = '';
+str.forEach(function (currentValue, index, array) {
+    if(currentValue === currentValue.toLowerCase()) currentValue = currentValue.toUpperCase();
+    else currentValue = currentValue.toLowerCase();
+    result += currentValue;
+});
+console.log(result);

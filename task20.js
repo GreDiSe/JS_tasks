@@ -1,7 +1,16 @@
-function check(a, b) {
-    return a > 0 && b < 0 || a < 0 && b > 0
+function findDuplicate(array) {
+    let dubl_ar = array.concat();
+    while (dubl_ar.length !== 0)
+    {
+        console.log(dubl_ar[0] + ' ' + getDuplIndex(dubl_ar[0], dubl_ar) + ' times');
+    }
 }
-console.log(check(5, 3)); // false
-console.log(check(5, -2)); // true
-console.log(check(-4, 1)); // true
-console.log(check(-7, -5)); // false
+function getDuplIndex(value, ar) {
+    let count = 0;
+    while(ar.indexOf(value) !== -1){
+        count++;
+        ar.splice(ar.indexOf(value), 1);
+    }
+    return count;
+}
+findDuplicate([2,2,4,6,3,3,5,7]);

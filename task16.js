@@ -1,5 +1,9 @@
-function sum(a, b) {
-    return (a === b) ? 3*(a+b) : a+b;
+function leapYears(min,max) {
+    let result = [];
+    for(let i = min; i <= max; i++){
+        if(i % 4 === 0) result.push(i);
+    }
+    return result
 }
-console.log(sum(5,5)) //30
-console.log(sum(4,5)) //9
+
+console.log(leapYears(1900, 1961))

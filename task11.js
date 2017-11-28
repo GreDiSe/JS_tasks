@@ -1,10 +1,8 @@
-function converTo(f) {
-    return ((f-32)/9)*5
+function sq(ar) {
+    let sum = 0;
+    ar.forEach(function (cur, index, arr) {
+        sum += cur*cur;
+    });
+    return sum
 }
-function converFrom(c) {
-    return (c/5*9)+32
-}
-let C = 60;
-let F = 140;
-console.log(F + ' F is ' + converTo(F) + ' C');
-console.log(C + ' C is ' + converFrom(C) + ' F');
+console.log(sq([0,1,2,3,4]));

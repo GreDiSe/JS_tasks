@@ -1,7 +1,12 @@
-function check(value) {
-    return value > 20 && value < 100 || value === 400
+let array1 = [1,0,2,3,4];
+let array2 = [3,5,6,7,8,13];
+let result = [];
+
+let max = (array1.length > array2.length) ? array1.length : array2.length;
+
+for(let i = 0; i < max; i++){
+    let first = array1[i] || 0;
+    let second = array2[i] || 0;
+    result.push(first + second)
 }
-console.log(check(5)); // false
-console.log(check(50)); // true
-console.log(check(124)); // false
-console.log(check(400)); // true
+console.log(result);

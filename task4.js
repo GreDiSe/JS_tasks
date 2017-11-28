@@ -1,6 +1,9 @@
-function square(a, b, c) {
-    let p = (a + b + c)/2;
-    return Math.sqrt(p*(p-a)*(p-b)*(p-c))
-
+function last(ar, col) {
+    if(!col) return ar[ar.length - 1];
+    col = ar.length - col;
+    col = col > 0 ? col : 0;
+    return ar.slice(col)
 }
-console.log('Square: ' + square(3,4,5));
+console.log(last([7, 9, 0, -2]));
+console.log(last([7, 9, 0, -2], 3));
+console.log(last([7, 9, 0, -2], 6));
