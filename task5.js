@@ -1,8 +1,5 @@
-function foo(value, step, col = 0) {
-    if(value === 1) return col;
-    value /= step;
-
-    return foo(value, step, ++col)
+function volume({h: h, r: r}) {
+    return Math.round(Math.PI * r * r * h * 10000) / 10000
 }
 
-console.log(foo(16,2))
+console.log(volume({h: 3, r: 5}))

@@ -1,12 +1,10 @@
-function evenNum(value)
-{
-    if (value === 1) return !value
-    if (value === 0) return !value;
-    else
-    {
-        value -= 2;
-        return evenNum(value);
+function sub(str) {
+    let result = []
+    for(let i = 0; i < str.length; i++){
+        for(let j =  i + 1; j <= str.length; j++){
+            if(i !== j) result.push(str.slice(i,j));
+        }
     }
+    return result;
 }
-console.log(evenNum(234)); //true
-console.log(evenNum(13)); //false
+console.log(sub('dima'))

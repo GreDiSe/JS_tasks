@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task18</title>
+</head>
+<body>
+<div id="div"></div>
+<h1 id="h1"></h1>
+<p id="p"></p>
+<h3 id="result"></h3>
+<script>
+    function dom(el) {
+        return (el && el.nodeType === 1)
+    }
+    let res = '';
+    res += 'div: ' + !!dom(document.getElementById('div')) + '<br>';
+    res += 'h1: ' + !!dom(document.getElementById('h1')) + '<br>';
+    res += 'p: ' + !!dom(document.getElementById('p')) + '<br>';
+    res += 'form: ' + !!dom(document.getElementById('form'));
+
+    document.getElementById('result').innerHTML = res;
+</script>
+</body>
+</html>

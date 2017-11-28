@@ -1,7 +1,25 @@
-function summa(ar, i = 0, sum = 0) {
-    if(i === ar.length) return sum;
-    sum += ar[i];
-    return summa(ar, ++i, sum)
-}
+let library = [
+    {
+        author: 'Bill Gates',
+        title: 'The Road Ahead',
+        readingStatus: true
+    },
+    {
+        author: 'Steve Jobs',
+        title: 'Walter Isaacson',
+        readingStatus: true
+    },
+    {
+        author: 'Suzanne Collins',
+        title:  'Mockingjay: The Final Book of The Hunger Games',
+        readingStatus: false
+    }
+];
 
-console.log(summa([1,2,3,4,5,6]))
+let haveRead = '', read = '';
+for(let cur of library){
+    if(cur.readingStatus) haveRead += cur.title + ' / ';
+    else read += cur.title + ' / '
+}
+console.log('Книги прочитаны: ' + haveRead);
+console.log('Книги не прочитаны: ' + read);

@@ -1,12 +1,16 @@
-function fibonacci(col)
+function arSort(ar)
 {
-    if (col === 1) return [0, 1];
-    else
+    for (let i = 0; i < ar.length - 1; i++)
     {
-        let ar = fibonacci(col - 1);
-        ar.push(ar[ar.length - 1] + ar[ar.length - 2]);
-        return ar;
+        for(let j = i + 1; j < ar.length; j++){
+            if (ar[i] > ar[j]){
+                let tmp = ar[j];
+                ar[j] = ar[i];
+                ar[i] = tmp;
+            }
+        }
     }
-};
+    return ar;
+}
 
-console.log(fibonacci(8));
+console.log(arSort([6,4,0, 3,-2,1]));

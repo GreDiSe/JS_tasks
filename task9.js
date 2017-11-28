@@ -1,28 +1,8 @@
-// Посмотрел решение, не знал как делать
-// Скопал код =(
-
-
-Array.prototype.merge_Sort = function () {
-    if (this.length <= 1)
-    {
-        return this;
-    }
-
-    var half = parseInt(this.length / 2);
-    var left = this.slice(0, half).merge_Sort();
-    var right = this.slice(half,     this.length).merge_Sort();
-    var merge = function (left, right)
-    {
-        var arry = [];
-        while (left.length > 0 && right.length > 0)
-        {
-            arry.push((left[0] <= right[0]) ? left.shift() : right.shift());
-        }
-        return arry.concat(left).concat(right);
-    };
-
-    return merge(left, right);
-};
-
-var a = [34,7,23,32,5,62];
-console.log(a.merge_Sort());
+function area (r) {
+    return Math.round(Math.PI * r *r * 10) / 10;
+}
+function perimeter  (r) {
+    return Math.round(Math.PI *2 * r * 10) / 10;
+}
+console.log(area(5));
+console.log(perimeter(5));
