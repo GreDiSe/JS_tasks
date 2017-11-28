@@ -1,5 +1,5 @@
 function check(value) {
-    return value > 20 && value < 100 || value === 400
+    return value >= 80 && value <= 120 || value >= 380 && value <= 420
 }
 console.log(check(5)); // false
 console.log(check(50)); // true
