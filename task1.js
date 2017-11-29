@@ -1,8 +1,6 @@
-function fact(x)
-{
-    if (x === 0) return 1;
-    return x * fact(x - 1);
-
+function delay(ms) {
+    return new Promise(function (resolve, reject) {
+        setTimeout(resolve, ms);
+    })
 }
-console.log(fact(7));
-console.log(fact(4));
+delay(1000).then(() => console.log("Hello!"))

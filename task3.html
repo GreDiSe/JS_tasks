@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task3</title>
+</head>
+<body>
+<div id="info"></div>
+<script>
+    const urls = [
+        'http://www.json-generator.com/api/json/get/cevhxOsZnS',
+        'http://www.json-generator.com/api/json/get/cguaPsRxAi',
+        'http://www.json-generator.com/api/json/get/cfDZdmxnDm',
+        'http://www.json-generator.com/api/json/get/cfkrfOjrfS',
+        'http://www.json-generator.com/api/json/get/ceQMMKpidK'
+    ];
+    let results = [];
+
+    function httpGet(url) {
+        return fetch(url)
+            .then(function (response) {
+                return response.json();
+            })
+    }
+    function show(inf) {
+        document.getElementById('info').innerHTML += '<br>';
+        for(var cur of inf){
+            for(let current in cur){
+                document.getElementById('info').innerHTML += cur[current] + ' / ';
+            }
+            document.getElementById('info').innerHTML += '<br>';
+        }
+    }
+
+    let chain = Promise.resolve();
+    // в цикле добавляем задачи в цепочку
+    urls.forEach(function(url) {
+        chain = chain
+            .then(() => httpGet(url))
+            .then((result) => {
+                results.push(result);
+            });
+    });
+    // в конце — выводим результаты
+    chain.then(() => {
+        show(results)
+    });
+
+    Promise.all( urls.map(httpGet) )
+        .then((res) => {show(res)});
+</script>
+
+</body>
+</html>
