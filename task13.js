@@ -1,6 +1,6 @@
 function allKeys(obj) {
     let result = Object.getOwnPropertyNames(obj).concat(Object.getOwnPropertyNames(Student.prototype));
-    result.splice(result.indexOf('constructor'), 1)
+    result.splice(result.indexOf('constructor'), 1);
     return result;
 }
 function Student(name) {
