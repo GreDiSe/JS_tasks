@@ -1,0 +1,28 @@
+.center{
+    margin: 20px auto;
+    width: 200px;
+}
+.center > button{
+    width: 100%;
+}
+.td{
+    width: 28px;
+    line-height: 26px;
+    height: 28px;
+    text-align: center;
+    border: 1px solid black;
+
+}
+.td:hover{
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    background-color: #b9def0;
+    border: 1px solid black;
+}
+.mine{
+    width: 26px;
+    height: 26px;
+    border: 1px solid black;
+    background-image: url("../img/mine.png");
+}
