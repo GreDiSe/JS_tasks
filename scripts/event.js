@@ -15,8 +15,13 @@ document.getElementById('choseMode').onclick = function (e) {
 document.getElementById('container').addEventListener('click', function (e) {
     if(e.target.tagName !== 'TD') return;
 
-    e.target.innerHTML = (mtr[findIJ(e.target).i][findIJ(e.target).j].mine) ? '' : mtr[findIJ(e.target).i][findIJ(e.target).j].value;
-    if(mtr[findIJ(e.target).i][findIJ(e.target).j].mine) showAllTable();
+    let i  = findIJ(e.target).i;
+    let j = findIJ(e.target).j;
+    e.target.innerHTML = (mtr[i][j].mine) ? '' : mtr[i][j].value;
+
+    showPart(i,j);
+
+    if(mtr[i][j].mine) showAllTable();
 });
 function findIJ(btn)
 {

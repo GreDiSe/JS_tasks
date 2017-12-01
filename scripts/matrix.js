@@ -21,14 +21,15 @@ Matrix.prototype.createEmptyMatrix = function() {
     }
     return result;
 };
+let isAbleToSet = function(coordinate) {
+    return coordinate > 0 && coordinate < MAX
+}
 Matrix.prototype.createMatrix = function () {
     let result = this.createEmptyMatrix(); //Создает пустую матрицу
     let mineIndex = this.getIndex(this.randomMine()); // Получаем массив индексив бомб
 
-    console.log(result);
     mineIndex.forEach(function (cur) {
         result[cur.i][cur.j].mine = true;
-        console.log('i: ' + cur.i + ' j: ' + cur.j);
         if(cur.i > 0) result[cur.i-1][cur.j].value++;
         if(cur.i > 0 && cur.j > 0) result[cur.i-1][cur.j-1].value++;
         if(cur.i > 0 && cur.j < result[0].length-1) result[cur.i-1][cur.j+1].value++;

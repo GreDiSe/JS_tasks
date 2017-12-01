@@ -42,4 +42,20 @@ function showAllTable() {
             }
         }
     }
-};
+}
+function showPart(i,j){
+    console.log('i: ' + i + ' j: ' + j);
+    if(mtr[i][j].mine || mtr[i][j].opened) return;
+    document.getElementById('container').childNodes[i].childNodes[j].innerHTML = mtr[i][j].value;
+    mtr[i][j].opened = true;
+    if(mtr[i][j].value) return;
+
+    if(i > 0) showPart(i-1,j);
+    if(i > 0 && j > 0) showPart(i-1,j-1);
+    if(i > 0 && j < mtr[0].length-1) showPart(i-1,j+1);
+    if(j < mtr[0].length-1) showPart(i,j+1);
+    if(j > 0) showPart(i,j-1);
+    if(i < mtr.length-1) showPart(i+1,j);
+    if(i < mtr.length-1 && j < mtr[0].length-1) showPart(i+1,j+1);
+    if(i < mtr.length-1 && j > 0) showPart(i+1,j-1);
+}
