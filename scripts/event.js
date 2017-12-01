@@ -38,8 +38,9 @@ document.getElementById('container').addEventListener('contextmenu', function (e
     let j = findIJ(e.target).j;
 
     if(e.target.textContent) return;
-    mtr[i][j].flag = true;
-    e.target.className = 'flag'
+    mtr[i][j].flag = !mtr[i][j].flag;
+    if(mtr[i][j].flag) e.target.className = 'flag';
+    else e.target.className = 'td';
 
     if(checkResult()) {
         document.getElementById('result').innerHTML = 'Поздровляю с победой';

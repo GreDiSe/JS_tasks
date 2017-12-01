@@ -35,6 +35,9 @@
     border: 1px solid black;
     background-image: url("../img/flag.png");
 }
+.flag:hover{
+    cursor: pointer;
+}
 .noMine{
     width: 26px;
     height: 26px;
@@ -46,5 +49,4 @@
     position: fixed;
     right: 40%;
     text-align: center;
-
 }
