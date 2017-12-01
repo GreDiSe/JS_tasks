@@ -26,3 +26,25 @@
     border: 1px solid black;
     background-image: url("../img/mine.png");
 }
+.open{
+    background-color: lightgrey;
+}
+.flag{
+    width: 26px;
+    height: 26px;
+    border: 1px solid black;
+    background-image: url("../img/flag.png");
+}
+.noMine{
+    width: 26px;
+    height: 26px;
+    border: 1px solid black;
+    background-image: url("../img/no_mine.png");
+}
+#result{
+    width: 20%;
+    position: fixed;
+    right: 40%;
+    text-align: center;
+
+}
