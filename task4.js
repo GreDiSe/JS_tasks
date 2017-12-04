@@ -1,8 +1,7 @@
 function foo() {
     return new Promise(function(resolve, reject){
         setTimeout(() => {
-            let r = Math.random() > 0.5;
-            if(r) resolve('Правда');
+            if(Math.random() > 0.5) resolve('Правда');
             else reject('Неправда');
         }, 1000);
     });
