@@ -1,6 +1,3 @@
-let bootstrap = require('bootstrap');
-let jquary = require('jquery');
-const NODE_ENV = process.env.NODE_ENV || 'dev';
 const webpack = require('webpack');
 
 module.exports = {
@@ -10,11 +7,12 @@ module.exports = {
     },
 
     plugins: [
-        new webpack.EnvironmentPlugin('NODE_ENV'),
-
         new webpack.ProvidePlugin({
-            '$': 'jquery',
-            'jQuery': 'jquery'
+            $: 'jquery',
+            jQuery: 'jquery'
+        }),
+        new webpack.ProvidePlugin({
+            Vue: ['vue/dist/vue.esm.js', 'default']
         })
     ]
 };
