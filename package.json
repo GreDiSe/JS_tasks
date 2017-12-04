@@ -1,0 +1,26 @@
+{
+  "name": "sapper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "node-static": "^0.7.10",
+    "jquery": "^3.2.1",
+    "webpack": "^3.9.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GreDiSe/JS_tasks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GreDiSe/JS_tasks/issues"
+  },
+  "homepage": "https://github.com/GreDiSe/JS_tasks#readme"
+}
