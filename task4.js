@@ -19,7 +19,7 @@ function MyPromise(fn) {
     }
     function handler(current) {
         if(!current) return;
-        if(status === 'pending') this.ResolveCallBack.push(current);
+        if(status === 'pending') me.ResolveCallBack.push(current);
         else current(value);
     }
 }
@@ -48,11 +48,11 @@ let p2 = foo();
 let p3 = foo();
 
 p1
-    .then(info => console.info('Out: ' + info))
-    .catch(er => console.error('Er: ' + er))
+    .then(info => console.info('1: ' + info))
+    .catch(er => console.error('1: ' + er));
 p2
-    .then(info => console.info(info))
-    .catch(er => console.error(er))
+    .then(info => console.info('2: ' + info))
+    .catch(er => console.error('2: ' + er));
 p3
-    .then(info => console.info(info))
-    .catch(er => console.error(er))
+    .then(info => console.info('3: ' + info))
+    .catch(er => console.error('3: ' + er));
