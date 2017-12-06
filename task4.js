@@ -34,7 +34,7 @@ MyPromise.prototype.catch = function (reject) {
 }
 function foo() {
     return new MyPromise(function(resolve, reject){
-        setTimeout(() => {
+        setTimeout(function () {
             if(Math.random() > 0.5) resolve('Правда ');
             else reject('Неправда ');
         }, 1000);
@@ -46,11 +46,11 @@ var p2 = foo('2');
 var p3 = foo('3');
 
 p1
-    .then(info => console.info('1: ' + info))
-    .catch(er => console.error('1: ' + er));
+    .then(function(info) { console.info('1: ' + info)})
+    .catch(function(er) {console.error('1: ' + er)});
 p2
-    .then(info => console.info('2: ' + info))
-    .catch(er => console.error('2: ' + er));
+    .then(function(info) { console.info('2: ' + info)})
+    .catch(function(er) {console.error('2: ' + er)});
 p3
-    .then(info => console.info('3: ' + info))
-    .catch(er => console.error('3: ' + er));
+    .then(function(info) { console.info('3: ' + info)})
+    .catch(function(er) {console.error('3: ' + er)});
