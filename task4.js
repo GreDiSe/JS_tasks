@@ -5,7 +5,7 @@ function MyPromise(fn) {
     this.RejectCallBack = [];
     let status = 'pending';
 
-    fn(inf =>  this.ResolveCallBack.push(onResolve(inf)), er => this.RejectCallBack.push(onReject(er)));
+    fn(onResolve, onReject);
 
     function onResolve(inf) {
         status = 'resolved';
@@ -33,7 +33,7 @@ MyPromise.prototype.then = function (resolve, reject) {
 };
 MyPromise.prototype.catch = function (reject) {
     if(reject) this.RejectCallBack.push(reject);
-};
+}
 function foo() {
     return new MyPromise(function(resolve, reject){
         setTimeout(() => {
