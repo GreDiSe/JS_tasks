@@ -1,36 +1,35 @@
 function MyPromise(fn){
-    this.value = null;
-    this.ResolveCallBack = [];
-    this.RejectCallBack = [];
-    this.status = 'pending';
-    this.onResolve = this.onResolve.bind(this);
-    this.onReject = this.onReject.bind(this);
-    this.handler = this.handler.bind(this);
-    fn(this.onResolve, this.onReject);
+    this._value = null;
+    this._ResolveCallBack = [];
+    this._RejectCallBack = [];
+    this._status = 'pending';
+    this._onResolve = this._onResolve.bind(this);
+    this._onReject = this._onReject.bind(this);
+    this._handler = this._handler.bind(this);
+    fn(this._onResolve, this._onReject);
 }
-MyPromise.prototype.onResolve = function(inf) {
-    this.status = 'resolved';
-    this.value = inf;
-    this.ResolveCallBack.forEach(this.handler);
+MyPromise.prototype._onResolve = function(inf) {
+    this._status = 'resolved';
+    this._value = inf;
+    this._ResolveCallBack.forEach(this._handler);
 };
-MyPromise.prototype.onReject = function(er) {
-    this.status = 'rejected';
-    this.value = er;
-    this.RejectCallBack.forEach(this.handler);
+MyPromise.prototype._onReject = function(er) {
+    this._status = 'rejected';
+    this._value = er;
+    this._RejectCallBack.forEach(this._handler);
 };
-MyPromise.prototype.handler = function(current) {
+MyPromise.prototype._handler = function(current) {
     if(!current) return;
-    if(this.status === 'pending') this.ResolveCallBack.push(current);
-    else current(this.value);
+    if(this._status === 'pending') this._ResolveCallBack.push(current);
+    else current(this._value);
 };
 MyPromise.prototype.then = function (resolve, reject) {
-
-    if(resolve) this.ResolveCallBack.push(resolve);
-    if(reject) this.RejectCallBack.push(reject);
+    if(resolve) this._ResolveCallBack.push(resolve);
+    if(reject) this._RejectCallBack.push(reject);
     return this;
 };
 MyPromise.prototype.catch = function (reject) {
-    if(reject) this.RejectCallBack.push(reject);
+    if(reject) this._RejectCallBack.push(reject);
 }
 function foo() {
     return new MyPromise(function(resolve, reject){
