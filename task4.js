@@ -1,40 +1,38 @@
-let value;
-let status;
-let ResolveCallBack = [];
-let RejectCallBack = [];
 function MyPromise(fn) {
-    ResolveCallBack = [];
-    RejectCallBack = [];
-    value = undefined;
-    status = 'pending';
-    fn(inf =>  ResolveCallBack.push(onResolve(inf)), er => RejectCallBack.push(onReject(er)));
-}
+    let me = this;
+    let value;
+    this.ResolveCallBack = [];
+    this.RejectCallBack = [];
+    let status = 'pending';
 
-function onResolve(inf) {
-    status = 'resolved';
-    value = inf;
-    ResolveCallBack.forEach(handler);
-}
-function onReject(er) {
-    status = 'rejected';
-    value = er;
-    RejectCallBack.forEach(handler);
-}
-function handler(current) {
-    if(!current) return;
-    if(status === 'pending') ResolveCallBack.push(current);
-    else current(value);
-}
+    fn(inf =>  this.ResolveCallBack.push(onResolve(inf)), er => this.RejectCallBack.push(onReject(er)));
 
+    function onResolve(inf) {
+        status = 'resolved';
+        value = inf;
+        me.ResolveCallBack.forEach(handler);
+    }
+    function onReject(er) {
+        status = 'rejected';
+        value = er;
+        me.RejectCallBack.forEach(handler);
+    }
+    function handler(current) {
+        if(!current) return;
+        if(status === 'pending') this.ResolveCallBack.push(current);
+        else current(value);
+    }
+}
 
 MyPromise.prototype.then = function (resolve, reject) {
-    if(resolve) ResolveCallBack.push(resolve);
-    if(reject) RejectCallBack.push(reject);
+
+    if(resolve) this.ResolveCallBack.push(resolve);
+    if(reject) this.RejectCallBack.push(reject);
 
     return this;
 };
 MyPromise.prototype.catch = function (reject) {
-    if(reject) RejectCallBack.push(reject);
+    if(reject) this.RejectCallBack.push(reject);
 };
 function foo() {
     return new MyPromise(function(resolve, reject){
@@ -52,9 +50,9 @@ let p3 = foo();
 p1
     .then(info => console.info('Out: ' + info))
     .catch(er => console.error('Er: ' + er))
-// p2
-//     .then(info => console.info(info))
-//     .catch(er => console.error(er))
-// p3
-//     .then(info => console.info(info))
-//     .catch(er => console.error(er))
+p2
+    .then(info => console.info(info))
+    .catch(er => console.error(er))
+p3
+    .then(info => console.info(info))
+    .catch(er => console.error(er))
