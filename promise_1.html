@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function get(url) {
+        return new Promise((succeed, fail) => {
+            var req = new XMLHttpRequest()
+            req.open("GET", url, true)
+            req.addEventListener("load", () => {
+                if (req.status < 400)
+                    succeed(req.responseText)
+                else
+                    fail(new Error("Request failed: " + req.statusText))
+            })
+            req.addEventListener("error", () => {
+                fail(new Error("Network error"))
+            })
+            req.send(null)
+        })
+    }
+    get('http://marijnhaverbeke.nl/').then(function (data) {
+        cout(data)
+    });
+    cout(43);
+
+    function cout(inf) {
+        let value = document.createElement('h2');
+        value.innerText = inf;
+        document.body.appendChild(value);
+    }
+</script>
+</body>
+</html>
