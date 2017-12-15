@@ -1,6 +1,6 @@
 drive(function*() {
     
-})
+});
 
 function drive(generator) {
     let iterator = generator()

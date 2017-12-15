@@ -22,16 +22,22 @@
             req.send(null)
         })
     }
-    get('http://marijnhaverbeke.nl/').then(function (data) {
-        cout(data)
-    });
-    cout(43);
 
-    function cout(inf) {
-        let value = document.createElement('h2');
-        value.innerText = inf;
-        document.body.appendChild(value);
-    }
+    get('http://marijnhaverbeke.nl/')
+        .then(function (data) {
+            data = data.match(/<a href=[\"|\'](?!http)(?!mail)(.*?)[\"|\']/ig);
+            data.forEach(function(cur, i){
+                data[i] = cur.slice(cur.indexOf('="') + 2, -1);
+                get('http://marijnhaverbeke.nl/' + data[i])
+                    .then(function (inf){
+                        var start = inf.indexOf('Piranha');
+                        if(start !== -1){
+                            inf = inf.slice(start, start + 7);
+                            console.log(inf)
+                        }
+                    })
+            })
+        })
 </script>
 </body>
 </html>
