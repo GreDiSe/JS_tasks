@@ -50,3 +50,17 @@
     right: 40%;
     text-align: center;
 }
+.value{
+    width: 28px;
+    height: 28px;
+    border: 1px solid black;
+    background-color: lightgreen;
+    text-align: center;
+    line-height: 26px;
+}
+.noValue{
+    width: 26px;
+    height: 26px;
+    border: 1px solid black;
+    background-color: lightgrey;
+}

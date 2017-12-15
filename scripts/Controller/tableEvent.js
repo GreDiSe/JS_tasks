@@ -23,15 +23,17 @@ document.getElementById('container').addEventListener('click', function (e) {
     let value = (mtr[i][j].value === 0) ? '' : mtr[i][j].value;
     e.target.innerHTML = (mtr[i][j].mine) ? '' : value;
 
-    showPart(i,j);
+    Table.showPart(i,j);
 
     if(mtr[i][j].mine) {
         document.getElementById('result').innerHTML = 'Сорри не сегодня, ты проиграл';
-        showAllTable();
+        Matrix.prepareForView(mtr);
+        Table.showAllTable(mtr);
     }
 });
 document.getElementById('container').addEventListener('contextmenu', function (e) {
     event.preventDefault();
+
     if(e.target.tagName !== 'TD') return;
 
     let i  = findIJ(e.target).i;
@@ -42,20 +44,24 @@ document.getElementById('container').addEventListener('contextmenu', function (e
     if(mtr[i][j].flag) e.target.className = 'flag';
     else e.target.className = 'td';
 
-    if(checkResult()) {
+    if(Matrix.checkResult(mtr)) {
         document.getElementById('result').innerHTML = 'Поздровляю с победой';
-        showAllTable();
+        Matrix.prepareForView(mtr);
+        Table.showAllTable(mtr);
+
         return false;
     }
 
 });
 function findIJ(btn)
 {
-    for(let i = 0; i < mtr.length; i++){
-        for(let j = 0; j < mtr[i].length; j++){
+    let res = {};
+    mtr.forEach((row, i) =>{
+        row.forEach((cur, j) =>{
             if(document.getElementById('container').childNodes[i].childNodes[j] === btn){
-                return {i:i, j:j}
+                res = {i:i, j:j}
             }
-        }
-    }
+        })
+    });
+    return res;
 }

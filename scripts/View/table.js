@@ -1,5 +1,5 @@
 class Table {
-    constructor(row, col, mine) {
+    constructor(row = 0, col = 0, mine = 0) {
         this.col = col;
         this.row = row;
         this.mine = mine;
@@ -24,4 +24,46 @@ class Table {
     removeTable() {
         this.container.innerHTML = '';
     };
+    static showAllTable() {
+        let container = document.getElementById('container');
+        mtr.forEach((row, i) =>{
+            row.forEach((cur,j) =>{
+                let el = container.childNodes[i].childNodes[j];
+                el.className = cur.out;
+                if(cur.out === 'value') el.textContent = cur.value
+            })
+        })
+
+    }
+    static showPartTable() {
+        let container = document.getElementById('container');
+        mtr.forEach((row, i) =>{
+            row.forEach((cur,j) =>{
+                if(cur.opened){
+                    if(cur.flag){
+                        let el = container.childNodes[i].childNodes[j];
+                        el.className = 'flag';
+                        if(cur.out === 'value') el.textContent = cur.value
+                    }
+                    else if(cur.value){
+                        let el = container.childNodes[i].childNodes[j];
+                        el.className = 'value';
+                        el.textContent = cur.value;
+                    }
+                    else {
+                        let el = container.childNodes[i].childNodes[j];
+                        el.className = 'noValue';
+                    }
+
+                }
+            })
+        })
+    }
+    static showPart(i, j){
+        Matrix.prepareForPartView(mtr)(i,j);
+        Table.showPartTable();
+    }
 }
+
+
+
